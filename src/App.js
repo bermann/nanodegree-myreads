@@ -8,19 +8,35 @@ import './App.css'
 class BooksApp extends React.Component {
 
   state = {
-    books: []
+    shelves: []
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) =>{
+      let shelves = []
+      shelves.push({
+        id: 'currentlyReading',
+        title: 'Currently Reading',
+        books: books.filter( (book) => book.shelf === 'currentlyReading' )
+      })
+      shelves.push({
+        id: 'wantToRead',
+        title: 'Want to Read',
+        books: books.filter( (book) => book.shelf === 'wantToRead' )
+      })
+      shelves.push({
+        id: 'read',
+        title: 'Read',
+        books: books.filter( (book) => book.shelf === 'read' )
+      })
       this.setState({
-        books: books
+        shelves: shelves
       })
     })
   }
 
   render() {
-    const { books } = this.state
+    const { shelves } = this.state
 
     return (
       <div className="app">
@@ -32,7 +48,7 @@ class BooksApp extends React.Component {
           path='/'
           render={ () => (
             <ListBooks
-              books={books}/>
+              shelves={shelves}/>
           )}
         />
       </div>
