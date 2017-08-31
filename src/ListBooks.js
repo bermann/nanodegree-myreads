@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Book from './Book'
+import BookShelf from './BookShelf'
 
 class ListBooks extends Component {
   render() {
@@ -13,18 +13,7 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">All Books</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  { books.map( book => (
-                    <li key={book.id}>
-                      <Book book={book} />
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
+            <BookShelf title="All Books" books={books} />
           </div>
         </div>
         <div className="open-search">
