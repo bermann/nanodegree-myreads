@@ -29,9 +29,6 @@ class BooksApp extends React.Component {
       title: 'Read',
       books: books.filter( (book) => book.shelf === 'read' )
     })
-    this.setState({
-      shelves: shelves
-    })
     return shelves
   }
 
