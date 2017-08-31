@@ -4,7 +4,7 @@ import BookShelf from './BookShelf'
 
 class ListBooks extends Component {
   render() {
-    const { shelves } = this.props
+    const { shelves, onUpdateBook } = this.props
 
     return (
       <div className="list-books">
@@ -14,8 +14,12 @@ class ListBooks extends Component {
         <div className="list-books-content">
           <div>
             { shelves.map( (shelf) => (
-              <BookShelf key={shelf.id} title={shelf.title} books={shelf.books} />
-          ))}
+              <BookShelf
+                key={shelf.id}
+                title={shelf.title}
+                books={shelf.books}
+                onUpdateBook={onUpdateBook}/>
+            ))}
           </div>
         </div>
         <div className="open-search">
