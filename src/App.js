@@ -50,7 +50,7 @@ class BooksApp extends React.Component {
     if (shelfId === 'none') {
       const index = this.books.indexOf(book)
       // if it was present in books, then remove it
-      if (index != -1)
+      if (index !== -1)
         this.books.splice(index, 1)
 
       // if the shelfID is not none and book was not in books, then add it
