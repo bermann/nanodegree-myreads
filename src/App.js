@@ -11,7 +11,6 @@ class BooksApp extends React.Component {
     shelves: []
   }
 
-
   shelvesFromBooks = (books) => {
     let shelves = []
     shelves.push({
@@ -66,6 +65,13 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelfId)
   }
 
+  setShelves = (books) => {
+    books.forEach( (book) => {
+      let bookWithShelf = this.books.filter( (b) => b.id === book.id )[0]
+      book.shelf = bookWithShelf ? bookWithShelf.shelf : 'none'
+    })
+  }
+
   componentDidMount() {
     BooksAPI.getAll().then((books) =>{
       this.books = books
@@ -88,7 +94,9 @@ class BooksApp extends React.Component {
               onUpdateBook={ (book, shelfId) => {
                 this.update(book, shelfId)
                 history.push('/')
-              }}/>
+              }}
+              setShelves={this.setShelves}
+            />
           )}
         />
         <Route exact

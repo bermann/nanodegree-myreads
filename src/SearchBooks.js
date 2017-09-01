@@ -13,8 +13,10 @@ class SearchBooks extends Component {
     BooksAPI.search(query, 10).then( (result) => {
       if (result.error)
         this.setState({books: [] })
-      else
+      else {
+        this.props.setShelves(result)
         this.setState({books: result})
+      }
     })
   }
 
