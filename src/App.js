@@ -31,13 +31,6 @@ class BooksApp extends React.Component {
     return shelves
   }
 
-
-  getShelf = (shelfId) => {
-    return this.state.shelves.filter( (shelf) => (
-      shelf.id === shelfId
-    )).firstChild
-  }
-
   update = (book, shelfId) => {
     // Skip when no change has been made
     if (book.shelf === shelfId)
